@@ -23,7 +23,7 @@ public class StudentController {
 		
 		String aString=JSONObject.toJSONString(studentService.getStudentById(id));
 		return aString;
-		//return "test";
+//		return "test";
 	}
 
 }
