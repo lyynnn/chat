@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nan.dao.StudentDao">
+	<resultMap type="Student" id="studentMap">
+		<result property="id" column="id"></result>
+		<result property="name" column="name"></result>
+		<result property="sex" column="sex"></result>
+		<result property="age" column="age"></result>
+		
+	</resultMap>
+	<select id="getStudents" parameterType="Student" resultMap="studentMap">
+		select id, name, sex, age from student 
+		<if test="withPage==1">
+			limit #{start},#{pageSize}
+		</if>
+	</select>
+	<select id="getStudentById" parameterType="java.lang.Integer" resultMap="studentMap">
+		select id, name, sex, age from student 
+		<where>
+			id=#{1}
+		</where>
+	</select>
+	<insert id="add" parameterType="Student">
+		insert into student
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="name!=null">
+					name,
+				</if>
+				<if test="sex!=null">
+					sex,
+				</if>
+				<if test="age!=null">
+					age,
+				</if>
+				
+			</trim>
+			values
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="name!=null">
+					#{name},
+				</if>
+				<if test="sex!=null">
+					#{sex},
+				</if>
+				<if test="age!=null">
+					#{age},
+				</if>
+				
+			</trim>
+	</insert>
+	<update id="update" parameterType="Student">
+		update student set 
+			<trim prefix=" " suffix=" " suffixOverrides=",">
+				<if test="name!=null">
+					name=#{name},
+				</if>
+				<if test="sex!=null">
+					sex=#{sex},
+				</if>
+				<if test="age!=null">
+					age=#{age},
+				</if>
+				
+			</trim>
+			where id=#{id}
+	</update>
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from student where id=#{1}
+	</delete>
+	<select id="count" parameterType="Student" resultType="java.lang.Integer">
+		select count(id) from student 
+	</select>
+</mapper>

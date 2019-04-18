@@ -1,0 +1,50 @@
+package com.nan.service.[objName];
+
+import java.util.List;
+
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
+import com.nan.dao.[ClassName]Dao;
+import com.nan.pojo.[ClassName];
+
+@Service
+public class [ClassName]ServiceImpl implements I[objName]Service {
+	@Resource
+	[ClassName]Dao [objName]Dao;
+
+	@Override
+	public List<[ClassName]> get[ClassName]s([ClassName] [objName]) {
+		// TODO Auto-generated method stub
+		return [objName]Dao.get[ClassName]s([objName]);
+	}
+
+	@Override
+	public [ClassName] get[ClassName]ById(int id) {
+		// TODO Auto-generated method stub
+		return [objName]Dao.get[ClassName]ById(id);
+	}
+
+	@Override
+	public int add([ClassName] [objName]) {
+		// TODO Auto-generated method stub
+		return [objName]Dao.add([objName]);
+	}
+
+	@Override
+	public int update([ClassName] [objName]) {
+		// TODO Auto-generated method stub
+		return [objName]Dao.update([objName]);
+	}
+
+	@Override
+	public int del(int id) {
+		// TODO Auto-generated method stub
+		return [objName]Dao.del(id);
+	}
+
+	@Override
+	public int count([ClassName] [objName]) {
+		// TODO Auto-generated method stub
+		return [objName]Dao.count([objName]);
+	}
+}

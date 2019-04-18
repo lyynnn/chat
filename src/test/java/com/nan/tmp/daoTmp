@@ -1,0 +1,14 @@
+package com.nan.dao;
+
+import java.util.List;
+
+import com.nan.pojo.[ClassName];
+
+public interface [ClassName]Dao {
+	List<[ClassName]> get[ClassName]s([ClassName] [objName]);
+	[ClassName] get[ClassName]ById(int id);
+	int add([ClassName] [objName]);
+	int update([ClassName] [objName]);
+	int del(int id);
+	int count([ClassName] [objName]);
+}
