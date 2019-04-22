@@ -13,9 +13,9 @@ public class StudentServiceImpl implements IstudentService {
 	StudentDao studentDao;
 
 	@Override
-	public List<Student> getStudents(Student student) {
+	public List<Student> getStudents(String name) {
 		// TODO Auto-generated method stub
-		return studentDao.getStudents(student);
+		return studentDao.getStudents(name);
 	}
 
 	@Override

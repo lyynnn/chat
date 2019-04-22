@@ -12,9 +12,9 @@
 	</resultMap>
 	<select id="getStudents" parameterType="Student" resultMap="studentMap">
 		select id, name, sex, age from student 
-		<if test="withPage==1">
+		<!-- <if test="withPage==1">
 			limit #{start},#{pageSize}
-		</if>
+		</if> -->
 	</select>
 	<select id="getStudentById" parameterType="java.lang.Integer" resultMap="studentMap">
 		select id, name, sex, age from student 

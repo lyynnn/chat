@@ -44,7 +44,7 @@ public class AutoDao {
 				 //定义resultMap
 				 StringBuilder resultMap=new StringBuilder();
 				 //定义selectList
-				 List<String> selectList=new ArrayList<>();
+				 List<String> selectList=new ArrayList<String>();
 				 //定义insertColumns
 				 StringBuilder insertColumns=new StringBuilder();
 				 //定义insertValues
@@ -55,20 +55,20 @@ public class AutoDao {
 				 Class clz=Class.forName(AutoUtils.PACKAGE+"."+AutoUtils.CLASSNAME);
 				 //判断该class是否有Table注解
 				Annotation ann = clz.getAnnotation(Table.class);
-				//如果加了Table注解 则用注解的�?�替代tableName
+				//如果加了Table注解 则用注解的�?�替代tableName
 				if(ann!=null){
 					tableName=((Table)ann).value();
 				}
-				// 获取class的属性列�?
+				// 获取class的属性列�?
 				Field[] fields = clz.getDeclaredFields();
 				for (Field field : fields) {
-					//获取属�?�名和数据库的字段名
-					//假如没有加Column注解 我们认为字段名和属�?�名�?�?
+					//获取属�?�名和数据库的字段名
+					//假如没有加Column注解 我们认为字段名和属�?�名�?�?
 					String columName= field.getName();
 					if(field.isAnnotationPresent(Column.class)){
 						columName=field.getAnnotation(Column.class).value();
 					}
-					//判断属�?�是否有id注解  如果有id注解则不添加�? insert列表�?
+					//判断属�?�是否有id注解  如果有id注解则不添加�? insert列表�?
 					if(!field.isAnnotationPresent(Id.class)){
 						if(field.isAnnotationPresent(Column.class)){
 							columName=field.getAnnotation(Column.class).value();
@@ -85,7 +85,7 @@ public class AutoDao {
 				}
 				 //读取模板内容
 				String tmpStr=FileUtils.readFileToString(tmpFile);
-				//替换字符�?
+				//替换字符�?
 				String data=tmpStr.replaceAll("\\[ClassName\\]", AutoUtils.CLASSNAME)
 						.replaceAll("\\[objName\\]", AutoUtils.OBJNAME)
 						.replaceAll("\\[tableName\\]", tableName)

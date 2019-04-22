@@ -23,16 +23,19 @@
 	<bean class="com.nan.util.MyPropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:config/db.properties"></property>
 	</bean>
+		<!-- mybatis连接数据库-->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
 		<property name="driverClassName" value="${driver}"></property>
 		<property name="url" value="${url}"></property>
 		<property name="username" value="${username}"></property>
 		<property name="password" value="${password}"></property>
 	</bean>
+		<!-- 数据库工厂 需要扫描pojo层 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="typeAliasesPackage" value="com.nan.pojo"></property>
 	</bean>
+		<!-- 需要扫描dao层 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.nan.dao"></property>
 	</bean>
