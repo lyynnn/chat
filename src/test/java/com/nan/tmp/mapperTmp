@@ -8,11 +8,9 @@
 	</resultMap>
 	<select id="get[ClassName]s" parameterType="[ClassName]" resultMap="[objName]Map">
 		select [selectList] from [tableName] 
-		<if test="withPage==1">
-			limit #{start},#{pageSize}
-		</if>
+		
 	</select>
-	<select id="get[ClassName]ById" parameterType="java.lang.Integer" resultMap="[objName]Map">
+	<select id="get[ClassName]ById" parameterType="java.lang.String" resultMap="[objName]Map">
 		select [selectList] from [tableName] 
 		<where>
 			id=#{1}
@@ -35,7 +33,7 @@
 			</trim>
 			where id=#{id}
 	</update>
-	<delete id="del" parameterType="java.lang.Integer">
+	<delete id="del" parameterType="java.lang.String">
 		delete from [tableName] where id=#{1}
 	</delete>
 	<select id="count" parameterType="[ClassName]" resultType="java.lang.Integer">

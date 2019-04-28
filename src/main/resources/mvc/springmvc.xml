@@ -28,7 +28,7 @@
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                 <constructor-arg value="UTF-8"/>
             </bean>
-            <!-- 配置Fastjson支持 -->
+            <!--@ResponseBody 配置Fastjson支持 -->
             <bean class="com.nan.core.JsonHttpMessageConverter">
                 <property name="charset" value="UTF-8"/>
                 <property name="supportedMediaTypes">

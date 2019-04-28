@@ -20,7 +20,10 @@
         http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 ">
+<!-- 扫描service层的包 自动注入，扫包加注解，扫的是包，但看的是类，那个类想放在IOC容器里哪个类就加：@component@controller@service@repository都能达到同样效果 -->
+<!--使属性进行依赖注入：@Autowired(spring的注解)@Resource（jdk的注解） 要运行   @Test单元测试 （与main区别：在运行时先加载配置文件）-->
 <context:component-scan base-package="com.nan.service"></context:component-scan>
+	    <!-- 导入config层下的配置文件 -->
 	<import resource="config/*.xml"/>
 
 </beans>

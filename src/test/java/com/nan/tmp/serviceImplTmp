@@ -19,7 +19,7 @@ public class [ClassName]ServiceImpl implements I[objName]Service {
 	}
 
 	@Override
-	public [ClassName] get[ClassName]ById(int id) {
+	public [ClassName] get[ClassName]ById(String id) {
 		// TODO Auto-generated method stub
 		return [objName]Dao.get[ClassName]ById(id);
 	}
@@ -37,7 +37,7 @@ public class [ClassName]ServiceImpl implements I[objName]Service {
 	}
 
 	@Override
-	public int del(int id) {
+	public int del(String id) {
 		// TODO Auto-generated method stub
 		return [objName]Dao.del(id);
 	}

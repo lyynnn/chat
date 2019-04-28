@@ -17,17 +17,18 @@ import com.alibaba.fastjson.JSONObject;
 import com.nan.pojo.Student;
 import com.nan.service.student.IstudentService;
 import com.nan.service.student.StudentServiceImpl;
-//°ÑÕâĞ©¶«Î÷·Åµ½mapÖĞÈ¥
-@Controller		//¼ÓÁË@Controller¾Í»á±»spring.mvcÖĞµÄ°üÉ¨Ãè---É¨ÃècontrollerËùÔÚ°ü£¬ÔÚĞèÒª±»É¨ÃèµÄÀàÉÏ¼Ó×¢½â	
-@RequestMapping("/studentJson")		//·½·¨¶ÔÓ¦Ò»¸öurl,°Ñurl¼ÓÔÚÕâ¸ö·½·¨ÉÏ×¢½âÊÇ@RequestMappingÏàµ±ÓÚwebservlet,µ±·şÎñÆ÷Æô¶¯µÄÊ±ºò¾Í¶ÁspringmvcÅäÖÃÎÄ¼ş½øĞĞ¼ÓÔØ
+//æŠŠè¿™äº›ä¸œè¥¿æ”¾åˆ°mapä¸­å»
+@Controller		//åŠ äº†@Controllerå°±ä¼šè¢«spring.mvcä¸­çš„åŒ…æ‰«æ---æ‰«æcontrolleræ‰€åœ¨åŒ…ï¼Œåœ¨éœ€è¦è¢«æ‰«æçš„ç±»ä¸ŠåŠ æ³¨è§£	
+@RequestMapping("/studentJson")		//æ–¹æ³•å¯¹åº”ä¸€ä¸ªurl,æŠŠurlåŠ åœ¨è¿™ä¸ªæ–¹æ³•ä¸Šæ³¨è§£æ˜¯@RequestMappingç›¸å½“äºwebservlet,å½“æœåŠ¡å™¨å¯åŠ¨çš„æ—¶å€™å°±è¯»springmvcé…ç½®æ–‡ä»¶è¿›è¡ŒåŠ è½½
 
-//ÔÚĞèÒª±»É¨ÃèµÄ·½·¨ÉÏ¼Ó@RequestMapping£¬/studentJson×÷Îªkey,·½·¨×÷Îªvalue
+//åœ¨éœ€è¦è¢«æ‰«æçš„æ–¹æ³•ä¸ŠåŠ @RequestMappingï¼Œ/studentJsonä½œä¸ºkey,æ–¹æ³•ä½œä¸ºvalue
 public class StudentController {
 @Resource
 	IstudentService studentService;
 		@RequestMapping("/list")
 		@ResponseBody
 		public List<Student> list(String name){	
+			
 			return studentService.getStudents(name);
 		}
 	

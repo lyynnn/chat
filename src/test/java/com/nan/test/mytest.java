@@ -1,5 +1,9 @@
 package com.nan.test;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,35 +15,64 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.nan.dao.StudentDao;
 import com.nan.pojo.Student;
+import com.nan.pojo.Tbuser;
 import com.nan.service.student.IstudentService;
+import com.nan.service.tbuser.ItbuserService;
+import com.nan.service.tbuser.TbuserServiceImpl;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:applicationContext.xml")
+@RunWith(SpringJUnit4ClassRunner.class)		//æµ‹è¯•ç±»åŠ è½½é…ç½®æ–‡ä»¶
+@ContextConfiguration(locations="classpath:applicationContext.xml")		//åŠ è½½å“ªä¸ªé…ç½®æ–‡ä»¶
 public class mytest {
-	//×¢½â (Ö»ÓĞ¼ÓÒ»´Î)
+	//æ³¨è§£ (åªæœ‰åŠ ä¸€æ¬¡)
 	@Resource
 	IstudentService studentService;
+	@Resource
+	ItbuserService tbuserService;
 	//Student student;
 	@Test
 	public void handler(){
-		//²âÊÔ´úÂë
-		//²âÊÔgetStudentById·½·¨
+		//æµ‹è¯•ä»£ç 
+		//æµ‹è¯•getStudentByIdæ–¹æ³•
 //		System.out.println(studentService.getStudentById(1).getName());
-		//²âÊÔdel·½·¨
+		//æµ‹è¯•delæ–¹æ³•
 		//System.out.println((studentService==null)+"******************");
-		studentService.del(1);
-		//²âÊÔadd
+//		studentService.del(1);
+		//æµ‹è¯•add
 		Student student = new Student();
 		//System.out.println((student==null)+"------------------");
 		student.setAge(1);
-		student.setName("wsh");
+		student.setName("wshccc");
 		student.setSex("malex");
 		//studentService.update(student);
 		studentService.add(student);
 		int students = studentService.count(student);
-		
 		System.out.println(students);
+		
+//		æµ‹è¯•tbuser
+		Tbuser tbuser=new Tbuser();
+	////å°†Stringç±»å‹æ ¼å¼åŒ–ä¸ºtimestamp
+		String date = "2009-07-16"; // <input type="datetime-local"> è¾“å…¥å‚æ•°
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+		try { 
+			Date dt = sdf.parse(date);
+			tbuser.setBirthday(new Timestamp(dt.getTime()));
+			} 
+		catch (ParseException e) {
+			e.printStackTrace();
+			}	
+//		tbuser.setId("15076022225");
+//		tbuser.setPassword("123456");
+//		tbuser.setUsertype("è€å¸ˆ");
+//		
+//		
+//		tbuser.setSex("å¥³");
+//		tbuser.setSign("çˆ±ä½ çˆ±ä½ ");
+//		
+//		tbuserService.add(tbuser);
+			System.out.println(tbuserService.getTbuserById("111111111111")!=null);
+	
+		
 	}
 	
 	/*public static void main(String[] args) {

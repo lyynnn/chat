@@ -85,6 +85,7 @@
 	    <version>${lombok.version}</version>
 	    <scope>provided</scope>
 	</dependency>
+	<!-- FileUtils包 就不用用原生流了-->
   	<dependency>
 	    <groupId>org.duracloud</groupId>
 	    <artifactId>common</artifactId>
@@ -111,6 +112,13 @@
 	    <version>1.19</version>
 	</dependency>
   	
+  	
+  	<!-- websocket -->
+  	<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
   	
   </dependencies>
   <!-- ************************************ -->

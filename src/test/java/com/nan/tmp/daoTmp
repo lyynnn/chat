@@ -6,9 +6,9 @@ import com.nan.pojo.[ClassName];
 
 public interface [ClassName]Dao {
 	List<[ClassName]> get[ClassName]s([ClassName] [objName]);
-	[ClassName] get[ClassName]ById(int id);
+	[ClassName] get[ClassName]ById(String id);
 	int add([ClassName] [objName]);
 	int update([ClassName] [objName]);
-	int del(int id);
+	int del(String id);
 	int count([ClassName] [objName]);
 }

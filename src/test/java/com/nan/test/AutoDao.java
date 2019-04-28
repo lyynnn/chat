@@ -17,13 +17,13 @@ public class AutoDao {
 	public static void autoInterface(){
 	  File file=new File(AutoUtils.BASEPATH+AutoUtils.DAOINTERFACE+AutoUtils.CLASSNAME+"Dao.java");
 	  File tmpFile=new File(AutoUtils.TMPPATH+"daoTmp");
-	  if(!file.exists()){
+	  if(!file.exists()){		//判断文件是否存在
 		  try {
 			file.createNewFile();
 			String tmpStr=FileUtils.readFileToString(tmpFile);
 			String newStr=tmpStr.replaceAll("\\[ClassName\\]", AutoUtils.CLASSNAME)
 					.replaceAll("\\[objName\\]", AutoUtils.OBJNAME);
-			FileUtils.writeStringToFile(file, newStr, "UTF-8");
+			FileUtils.writeStringToFile(file, newStr, "UTF-8");			//传一个文件给你读成字符串
 			System.out.println("写入dao接口文件完成");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
