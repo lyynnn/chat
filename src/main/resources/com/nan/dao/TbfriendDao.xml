@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nan.dao.TbfriendDao">
+	<resultMap type="Tbfriend" id="tbfriendMap">
+		<result property="hostphone" column="hostphone"></result>
+		<result property="friendphone" column="friendphone"></result>
+		<result property="remarkname" column="remarkname"></result>
+		<result property="friendlabel" column="friendlabel"></result>
+		
+	</resultMap>
+	<select id="getTbfriends" parameterType="Tbfriend" resultMap="tbfriendMap">
+		<!--select hostphone, friendphone, remarkname, friendlabel from tbfriend   -->
+		SELECT tbfriend.*,tbuser.* FROM tbfriend,tbuser  WHERE friendphone=id AND hostphone=#{1}
+		<!-- <where>
+		friendphone=id 
+		</where> -->
+		
+	</select>
+	<select id="getTbfriendById" parameterType="Tbfriend" resultMap="tbfriendMap">
+		select hostphone, friendphone, remarkname, friendlabel from tbfriend 
+		<where>
+			hostphone=#{1}
+		</where>
+	</select>
+	<insert id="add" parameterType="Tbfriend">
+		insert into tbfriend
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="hostphone!=null">
+					hostphone,
+				</if>
+				<if test="friendphone!=null">
+					friendphone,
+				</if>
+				<if test="remarkname!=null">
+					remarkname,
+				</if>
+				<if test="friendlabel!=null">
+					friendlabel,
+				</if>
+				
+			</trim>
+			values
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="hostphone!=null">
+					#{hostphone},
+				</if>
+				<if test="friendphone!=null">
+					#{friendphone},
+				</if>
+				<if test="remarkname!=null">
+					#{remarkname},
+				</if>
+				<if test="friendlabel!=null">
+					#{friendlabel},
+				</if>
+				
+			</trim>
+	</insert>
+	<update id="update" parameterType="Tbfriend">
+		update tbfriend set 
+			<trim prefix=" " suffix=" " suffixOverrides=",">
+				<if test="hostphone!=null">
+					hostphone=#{hostphone},
+				</if>
+				<if test="friendphone!=null">
+					friendphone=#{friendphone},
+				</if>
+				<if test="remarkname!=null">
+					remarkname=#{remarkname},
+				</if>
+				<if test="friendlabel!=null">
+					friendlabel=#{friendlabel},
+				</if>
+				
+			</trim>
+			where id=#{id}
+	</update>
+	<delete id="del" parameterType="java.lang.String">
+		delete from tbfriend where id=#{1}
+	</delete>
+	<select id="count" parameterType="Tbfriend" resultType="java.lang.Integer">
+		select count(id) from tbfriend 
+	</select>
+</mapper>

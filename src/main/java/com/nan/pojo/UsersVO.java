@@ -6,17 +6,16 @@ import com.nan.util.Table;
 
 import lombok.Data;
 
-@Table(value="Tbuser")
+
 @Data
-public class Tbuser {
-	
+public class UsersVO extends Tbuser{
 	private String id;
 	private String password;
 	private String nickname;
 	private String sex;
 	private String face;
 	private String usertype;
-	private String sign;
+	private String sign;    
 	private Timestamp birthday;
-	
+	private String uniqueToken;
 }

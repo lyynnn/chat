@@ -6,7 +6,7 @@ import com.nan.pojo.Tbuser;
 
 public interface TbuserDao {
 	List<Tbuser> getTbusers(Tbuser tbuser);
-	Tbuser getTbuserById(String id);
+	Tbuser getTbuserById(String hostphone);
 	int add(Tbuser tbuser);
 	int update(Tbuser tbuser);
 	int del(String id);

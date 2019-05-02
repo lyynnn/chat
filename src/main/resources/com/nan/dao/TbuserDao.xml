@@ -12,15 +12,14 @@
 		<result property="usertype" column="usertype"></result>
 		<result property="sign" column="sign"></result>
 		<result property="birthday" column="birthday"></result>
-		<result property="userToken" column="userToken"></result>
 		
 	</resultMap>
 	<select id="getTbusers" parameterType="Tbuser" resultMap="tbuserMap">
-		select id, password, nickname, sex, face, usertype, sign, birthday, userToken from Tbuser 
+		select id, password, nickname, sex, face, usertype, sign, birthday from Tbuser 
 		
 	</select>
 	<select id="getTbuserById" parameterType="java.lang.String" resultMap="tbuserMap">
-		select id, password, nickname, sex, face, usertype, sign, birthday, userToken from Tbuser 
+		select id, password, nickname, sex, face, usertype, sign, birthday from Tbuser 
 		<where>
 			id=#{1}
 		</where>
@@ -52,9 +51,6 @@
 				<if test="birthday!=null">
 					birthday,
 				</if>
-				<if test="userToken!=null">
-					userToken,
-				</if>
 				
 			</trim>
 			values
@@ -82,9 +78,6 @@
 				</if>
 				<if test="birthday!=null">
 					#{birthday},
-				</if>
-				<if test="userToken!=null">
-					#{userToken},
 				</if>
 				
 			</trim>
@@ -115,9 +108,6 @@
 				</if>
 				<if test="birthday!=null">
 					birthday=#{birthday},
-				</if>
-				<if test="userToken!=null">
-					userToken=#{userToken},
 				</if>
 				
 			</trim>
