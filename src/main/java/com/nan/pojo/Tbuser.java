@@ -19,4 +19,5 @@ public class Tbuser {
 	private String sign;
 	private Timestamp birthday;
 	
+	
 }

@@ -10,13 +10,14 @@
 		<result property="friendlabel" column="friendlabel"></result>
 		
 	</resultMap>
+	
+	<!-- 联表查询 -->
+	<select id="getLinkList" parameterType="Tbfriend" resultMap="tbfriendMap">
+	SELECT tbfriend.* FROM tbfriend,tbuser  WHERE friendphone=id AND hostphone=#{hostphone}
+	</select>
+	<!--联表查询end  -->
 	<select id="getTbfriends" parameterType="Tbfriend" resultMap="tbfriendMap">
-		<!--select hostphone, friendphone, remarkname, friendlabel from tbfriend   -->
-		SELECT tbfriend.*,tbuser.* FROM tbfriend,tbuser  WHERE friendphone=id AND hostphone=#{1}
-		<!-- <where>
-		friendphone=id 
-		</where> -->
-		
+		select hostphone, friendphone, remarkname, friendlabel from tbfriend   
 	</select>
 	<select id="getTbfriendById" parameterType="Tbfriend" resultMap="tbfriendMap">
 		select hostphone, friendphone, remarkname, friendlabel from tbfriend 

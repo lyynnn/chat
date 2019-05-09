@@ -11,4 +11,7 @@ public interface TbfriendDao {
 	int update(Tbfriend tbfriend);
 	int del(String id);
 	int count(Tbfriend tbfriend);
+	
+//	联表查询
+	List <Tbfriend> getLinkList (Tbfriend tbfriend);
 }

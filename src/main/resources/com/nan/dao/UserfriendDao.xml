@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nan.dao.TbuserDao">
-	<resultMap type="Tbuser" id="tbuserMap">
+<mapper namespace="com.nan.dao.UserfriendDao">
+	<resultMap type="Userfriend" id="userfriendMap">
 		<result property="id" column="id"></result>
 		<result property="password" column="password"></result>
 		<result property="nickname" column="nickname"></result>
@@ -12,26 +12,21 @@
 		<result property="usertype" column="usertype"></result>
 		<result property="sign" column="sign"></result>
 		<result property="birthday" column="birthday"></result>
+		<result property="tbfriend" column="tbfriend"></result>
 		
 	</resultMap>
-	<!-- 联表查询 -->
-	<select id="getLinkmenList" parameterType="Tbuser" resultMap="tbuserMap">
-	SELECT tbuser.* FROM tbfriend,tbuser  WHERE friendphone=id AND hostphone=#{id}
+	<select id="getUserfriends" parameterType="Userfriend" resultMap="userfriendMap">
+		select id, password, nickname, sex, face, usertype, sign, birthday, tbfriend from userfriend 
+		WHERE friendphone=id AND hostphone=#{1}
 	</select>
-	
-	<!-- 联表查询end -->
-	<select id="getTbusers" parameterType="Tbuser" resultMap="tbuserMap">
-		select id, password, nickname, sex, face, usertype, sign, birthday from Tbuser 
-		
-	</select>
-	<select id="getTbuserById" parameterType="java.lang.String" resultMap="tbuserMap">
-		select id, password, nickname, sex, face, usertype, sign, birthday from Tbuser 
+	<select id="getUserfriendById" parameterType="java.lang.String" resultMap="userfriendMap">
+		select id, password, nickname, sex, face, usertype, sign, birthday, tbfriend from userfriend 
 		<where>
 			id=#{1}
 		</where>
 	</select>
-	<insert id="add" parameterType="Tbuser">
-		insert into Tbuser
+	<insert id="add" parameterType="Userfriend">
+		insert into userfriend
 			<trim prefix="(" suffix=")" suffixOverrides=",">
 				<if test="id!=null">
 					id,
@@ -56,6 +51,9 @@
 				</if>
 				<if test="birthday!=null">
 					birthday,
+				</if>
+				<if test="tbfriend!=null">
+					tbfriend,
 				</if>
 				
 			</trim>
@@ -85,11 +83,14 @@
 				<if test="birthday!=null">
 					#{birthday},
 				</if>
+				<if test="tbfriend!=null">
+					#{tbfriend},
+				</if>
 				
 			</trim>
 	</insert>
-	<update id="update" parameterType="Tbuser">
-		update Tbuser set 
+	<update id="update" parameterType="Userfriend">
+		update userfriend set 
 			<trim prefix=" " suffix=" " suffixOverrides=",">
 				<if test="id!=null">
 					id=#{id},
@@ -115,14 +116,17 @@
 				<if test="birthday!=null">
 					birthday=#{birthday},
 				</if>
+				<if test="tbfriend!=null">
+					tbfriend=#{tbfriend},
+				</if>
 				
 			</trim>
 			where id=#{id}
 	</update>
 	<delete id="del" parameterType="java.lang.String">
-		delete from Tbuser where id=#{1}
+		delete from userfriend where id=#{1}
 	</delete>
-	<select id="count" parameterType="Tbuser" resultType="java.lang.Integer">
-		select count(id) from Tbuser 
+	<select id="count" parameterType="Userfriend" resultType="java.lang.Integer">
+		select count(id) from userfriend 
 	</select>
 </mapper>

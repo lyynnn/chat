@@ -50,11 +50,12 @@
                 </property>
             </bean>
         </mvc:message-converters>
-   </mvc:annotation-driven>                 
+   </mvc:annotation-driven>     
+   <!-- 扫描controller层 --><!-- 输出解析器的配置，就是一个bean节点 --><!-- 这一定是转发 -->            
 	<context:component-scan base-package="com.nan.controller"></context:component-scan>
-
+	<context:component-scan base-package="com.nan.chat"></context:component-scan>
 	
-	<!-- 扫描controller层 --><!-- 输出解析器的配置，就是一个bean节点 --><!-- 这一定是转发 -->
+	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
 		<property name="prefix" value="/WEB-INF/pages/"></property>

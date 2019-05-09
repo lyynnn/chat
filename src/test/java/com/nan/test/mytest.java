@@ -14,9 +14,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.nan.dao.StudentDao;
+import com.nan.pojo.Groupuser;
 import com.nan.pojo.Student;
+import com.nan.pojo.Tbfriend;
 import com.nan.pojo.Tbuser;
+import com.nan.service.groupuser.GroupuserServiceImpl;
+import com.nan.service.groupuser.IgroupuserService;
 import com.nan.service.student.IstudentService;
+import com.nan.service.tbfriend.ItbfriendService;
 import com.nan.service.tbuser.ItbuserService;
 import com.nan.service.tbuser.TbuserServiceImpl;
 
@@ -29,9 +34,28 @@ public class mytest {
 	IstudentService studentService;
 	@Resource
 	ItbuserService tbuserService;
+	@Resource
+	ItbfriendService tbfriendService;
 	//Student student;
+	@Resource
+	IgroupuserService groupServer;
 	@Test
 	public void handler(){
+		
+//		IgroupuserService groupServer = new GroupuserServiceImpl();
+		List<Groupuser> users = groupServer.getGroupuserById("1");
+		if(users==null)return;
+		for(Groupuser user: users){
+			System.out.println(user+"******");
+		}	
+		
+		Tbfriend tbfriend=new Tbfriend();
+		tbfriend.setHostphone("15076099965");
+		
+		System.out.println("kkkkkk"+tbfriendService.getLinkList(tbfriend));
+		String userID="";
+		Tbuser tbuser=tbuserService.getTbuserById(userID);
+		System.out.println("lllllllllllllllllll");
 		//测试代码
 		//测试getStudentById方法
 //		System.out.println(studentService.getStudentById(1).getName());
@@ -39,28 +63,28 @@ public class mytest {
 		//System.out.println((studentService==null)+"******************");
 //		studentService.del(1);
 		//测试add
-		Student student = new Student();
+//		Student student = new Student();
 		//System.out.println((student==null)+"------------------");
-		student.setAge(1);
-		student.setName("wshccc");
-		student.setSex("malex");
+//		student.setAge(1);
+//		student.setName("wshccc");
+//		student.setSex("malex");
 		//studentService.update(student);
-		studentService.add(student);
-		int students = studentService.count(student);
-		System.out.println(students);
+//		studentService.add(student);
+//		int students = studentService.count(student);
+//		System.out.println(students);
 		
 //		测试tbuser
-		Tbuser tbuser=new Tbuser();
+//		Tbuser tbuser=new Tbuser();
 	////将String类型格式化为timestamp
-		String date = "2009-07-16"; // <input type="datetime-local"> 输入参数
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
-		try { 
-			Date dt = sdf.parse(date);
-			tbuser.setBirthday(new Timestamp(dt.getTime()));
-			} 
-		catch (ParseException e) {
-			e.printStackTrace();
-			}	
+//		String date = "2009-07-16"; // <input type="datetime-local"> 输入参数
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+//		try { 
+//			Date dt = sdf.parse(date);
+//			tbuser.setBirthday(new Timestamp(dt.getTime()));
+//			} 
+//		catch (ParseException e) {
+//			e.printStackTrace();
+//			}	
 //		tbuser.setId("15076022225");
 //		tbuser.setPassword("123456");
 //		tbuser.setUsertype("老师");
@@ -70,7 +94,7 @@ public class mytest {
 //		tbuser.setSign("爱你爱你");
 //		
 //		tbuserService.add(tbuser);
-			System.out.println(tbuserService.getTbuserById("111111111111")!=null);
+//			System.out.println(tbuserService.getTbuserById("111111111111")!=null);
 	
 		
 	}

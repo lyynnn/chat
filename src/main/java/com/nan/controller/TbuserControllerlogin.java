@@ -34,42 +34,20 @@ import com.alibaba.druid.sql.ast.statement.SQLIfStatement.Else;
 import com.alibaba.fastjson.JSON;
 import com.jcraft.jsch.Session;
 import com.nan.pojo.Student;
+import com.nan.pojo.Tbfriend;
 
 @Controller
 @RequestMapping("/user")
 public class TbuserControllerlogin {
 	@Resource
 	ItbuserService tbuserService;
-	//DESUtils des=new DESUtils();
-	
-//	HttpSession session;
-	
-//	@RequestMapping("zhuce")
-//	@ResponseBody
-//	public List<Tbuser> add(Tbuser tbuser){
-//		System.out.println("进入zhuece");
-//		System.out.println(tbuser);
-//		
-////		if(tbuserService.getTbuserById(tbuser.getId()).getId().equals(tbuser.getId())){
-////			System.out.println("kkkkkkkkkkkkk");
-////			return "已有账号请登录";
-////		}
-////		else
-////		{
-////			System.out.println("lllllllllllllll");
-////			tbuserService.add(tbuser);
-////			return "注册成功";
-////		}
-//		tbuserService.add(tbuser);
-//		return	(List<Tbuser>) tbuserService.getTbuserById(tbuser.getId());
-//		
-//		
-//	}
 	
 	@RequestMapping("zhuce")
 	@ResponseBody
-	public Tbuser add(Tbuser tbuser){
+	public Tbuser add(Tbuser tbuser,HttpSession request,HttpSession session){
 		tbuserService.add(tbuser);
+//		HttpSession session=request.getSession();
+		session.setAttribute("id", tbuser.getId());
 		Tbuser tbuser2= tbuserService.getTbuserById(tbuser.getId());
 		 return tbuser2;
 	}
@@ -79,17 +57,24 @@ public class TbuserControllerlogin {
 		Tbuser object=null;
 		Tbuser tbuser_sql=tbuserService.getTbuserById(tbuser.getId());
 		if(tbuser_sql!=null){
+			
 			System.out.println(tbuser_sql.getPassword());
 			System.out.println(tbuser.getPassword());
 			if(tbuser_sql.getPassword().trim().equals(tbuser.getPassword().trim())){
-				if(tbuser_sql.getUsertype().trim().equals(tbuser.getUsertype().trim())){
-					System.out.println("正确哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦");
+//				if(tbuser_sql.getUsertype().trim().equals(tbuser.getUsertype().trim())){
+					//全局session
+					HttpSession session=request.getSession();
+    				session.setAttribute("id",tbuser_sql.getId());
+    				session.setAttribute("face", tbuser_sql.getFace());
+    				
+					String iddd=session.getAttribute("face").toString();
+					System.out.println(iddd);
 					return tbuser_sql;
-				}
-				else {
-					System.out.println("用户类型哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦");
-					return object;
-				}
+//				}
+//				else {
+//					System.out.println("用户类型哦哦哦哦哦哦哦哦哦哦哦哦哦哦哦");
+//					return object;
+//				}
 				
 			}
 			else {
@@ -122,11 +107,6 @@ public class TbuserControllerlogin {
 		}
 	}
 	
-	/*@RequestMapping(value = "/*",method = RequestMethod.OPTIONS)
-	public ResponseEntity handleOptions(){
-	    return (ResponseEntity) ResponseEntity.noContent();
-	}*/
-	
 	
 	@RequestMapping("uploadFace")   
 	@ResponseBody
@@ -145,7 +125,7 @@ public class TbuserControllerlogin {
 		String userid=request.getHeader("headerUserId");
 		String userToken=request.getHeader("headerUserToken");    
 		System.out.println(userid+",,,,,,,,,,,,,,,,,");
-		
+	
 		String id = request.getParameter("id");
 		System.out.println(id);
 		String filePath = request.getParameter("filePath");
@@ -172,6 +152,20 @@ public class TbuserControllerlogin {
 			return null;
 		}
 	}
+	
+	////////////////////////////好友列表
+	@RequestMapping("friends")
+	@ResponseBody
+	public List<Tbuser> list(Tbuser tbuser){
+		System.out.println("friends2222222222222222222");
+		
+		System.out.println(tbuserService.getLinkmenList(tbuser));
+		
+		//String hostphone=request.getParameter("id");
+		return  tbuserService.getLinkmenList(tbuser);
+	}
+	
+	
 	}
 	
 	

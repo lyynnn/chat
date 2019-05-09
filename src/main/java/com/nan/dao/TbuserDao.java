@@ -6,9 +6,12 @@ import com.nan.pojo.Tbuser;
 
 public interface TbuserDao {
 	List<Tbuser> getTbusers(Tbuser tbuser);
-	Tbuser getTbuserById(String hostphone);
+	Tbuser getTbuserById(String id);
 	int add(Tbuser tbuser);
 	int update(Tbuser tbuser);
 	int del(String id);
 	int count(Tbuser tbuser);
+	
+//	联表查询
+	List<Tbuser> getLinkmenList (Tbuser tbuser);
 }

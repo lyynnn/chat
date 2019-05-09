@@ -47,4 +47,8 @@ public class TbuserServiceImpl implements ItbuserService {
 		// TODO Auto-generated method stub
 		return tbuserDao.count(tbuser);
 	}
+	@Override
+	public List<Tbuser> getLinkmenList(Tbuser tbuser){
+		return tbuserDao.getLinkmenList(tbuser);
+	}
 }

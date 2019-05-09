@@ -47,4 +47,11 @@ public class TbfriendServiceImpl implements ItbfriendService {
 		// TODO Auto-generated method stub
 		return tbfriendDao.count(tbfriend);
 	}
+	
+//	联表查询
+	@Override
+	public List<Tbfriend> getLinkList(Tbfriend tbfriend){
+		// TODO Auto-generated method stub
+		return tbfriendDao.getLinkList(tbfriend);
+	}
 }

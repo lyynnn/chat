@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nan.dao.GroupuserDao">
+	<resultMap type="Groupuser" id="groupuserMap">
+		<result property="groupid" column="groupid"></result>
+		<result property="userid" column="userid"></result>
+		
+	</resultMap>
+	<select id="getGroupusers" parameterType="Groupuser" resultMap="groupuserMap">
+		select groupid, userid from groupuser 
+		
+	</select>
+	<select id="getGroupuserById" parameterType="java.lang.String" resultMap="groupuserMap">
+		select groupid, userid from groupuser 
+		<where>
+			groupid=#{groupid}
+			<!-- groupid='1' -->
+		</where>
+	</select>
+	<insert id="add" parameterType="Groupuser">
+		insert into groupuser
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="groupid!=null">
+					groupid,
+				</if>
+				<if test="userid!=null">
+					userid,
+				</if>
+				
+			</trim>
+			values
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+				<if test="groupid!=null">
+					#{groupid},
+				</if>
+				<if test="userid!=null">
+					#{userid},
+				</if>
+				
+			</trim>
+	</insert>
+	<update id="update" parameterType="Groupuser">
+		update groupuser set 
+			<trim prefix=" " suffix=" " suffixOverrides=",">
+				<if test="groupid!=null">
+					groupid=#{groupid},
+				</if>
+				<if test="userid!=null">
+					userid=#{userid},
+				</if>
+				
+			</trim>
+			where id=#{id}
+	</update>
+	<delete id="del" parameterType="java.lang.String">
+		delete from groupuser where id=#{1}
+	</delete>
+	<select id="count" parameterType="Groupuser" resultType="java.lang.Integer">
+		select count(id) from groupuser 
+	</select>
+</mapper>

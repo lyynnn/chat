@@ -11,4 +11,7 @@ public interface ItbuserService {
 	int update(Tbuser tbuser);
 	int del(String id);
 	int count(Tbuser tbuser);
+	
+//	联表查询
+	List<Tbuser> getLinkmenList(Tbuser tbuser);
 }

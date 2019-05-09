@@ -31,8 +31,11 @@ public class TbfriendController {
 	public List<Tbfriend> list(Tbfriend tbfriend){
 		System.out.println("friendslllllllllllllllllllllllllllll");
 		String id=tbfriend.getHostphone();
+		System.out.println(id);
+		System.out.println(friendService.getLinkList(tbfriend));
+		
 		//String hostphone=request.getParameter("id");
-		return  friendService.getTbfriends(tbfriend);
+		return  friendService.getLinkList(tbfriend);
 	}
 	
 	
