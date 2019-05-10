@@ -6,7 +6,11 @@ import com.nan.pojo.Groupuser;
 
 public interface IgroupuserService {
 	List<Groupuser> getGroupusers(Groupuser groupuser);
-	List<Groupuser> getGroupuserById(String id);
+	List<Groupuser> getGroupuserById(String groupid);
+	
+	List<Groupuser> getGroupuserByuserId(String userid);
+	
+	
 	int add(Groupuser groupuser);
 	int update(Groupuser groupuser);
 	int del(String id);

@@ -9,4 +9,5 @@ import lombok.Data;
 public class Groupuser {
 private String groupid;
 private String userid;
+private String groupname;
 }

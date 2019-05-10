@@ -47,8 +47,9 @@ public class mytest {
 		if(users==null)return;
 		for(Groupuser user: users){
 			System.out.println(user+"******");
-		}	
-		
+		}
+		List<Groupuser> ids=groupServer.getGroupuserByuserId("15076099965");
+		System.out.println(ids+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		Tbfriend tbfriend=new Tbfriend();
 		tbfriend.setHostphone("15076099965");
 		

@@ -19,11 +19,17 @@ public class GroupuserServiceImpl implements IgroupuserService {
 	}
 
 	@Override
-	public List<Groupuser> getGroupuserById(String id) {
+	public List<Groupuser> getGroupuserById(String groupid) {
 		// TODO Auto-generated method stub
-		return groupuserDao.getGroupuserById(id);
+		return groupuserDao.getGroupuserById(groupid);
 	}
-
+	
+	@Override
+	public List<Groupuser> getGroupuserByuserId(String userid) {
+		// TODO Auto-generated method stub
+		return groupuserDao.getGroupuserByuserId(userid);
+	}
+	
 	@Override
 	public int add(Groupuser groupuser) {
 		// TODO Auto-generated method stub

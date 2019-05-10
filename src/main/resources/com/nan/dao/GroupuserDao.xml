@@ -9,16 +9,27 @@
 		
 	</resultMap>
 	<select id="getGroupusers" parameterType="Groupuser" resultMap="groupuserMap">
-		select groupid, userid from groupuser 
+		select groupid, userid, groupname from groupuser 
 		
 	</select>
 	<select id="getGroupuserById" parameterType="java.lang.String" resultMap="groupuserMap">
-		select groupid, userid from groupuser 
+		select  userid from groupuser 
 		<where>
 			groupid=#{groupid}
 			<!-- groupid='1' -->
 		</where>
 	</select>
+	
+	<select id="getGroupuserByuserId" parameterType="java.lang.String" resultMap="groupuserMap">
+		select groupid, userid, groupname from groupuser 
+		<where>
+			userid=#{1}
+			<!-- groupid='1' -->
+		</where>
+	</select>
+	
+	
+	
 	<insert id="add" parameterType="Groupuser">
 		insert into groupuser
 			<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -27,6 +38,9 @@
 				</if>
 				<if test="userid!=null">
 					userid,
+				</if>
+				<if test="groupname!=null">
+					groupname,
 				</if>
 				
 			</trim>
@@ -37,6 +51,9 @@
 				</if>
 				<if test="userid!=null">
 					#{userid},
+				</if>
+				<if test="groupname!=null">
+					#{groupname},
 				</if>
 				
 			</trim>

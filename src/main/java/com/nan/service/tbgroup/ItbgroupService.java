@@ -6,7 +6,7 @@ import com.nan.pojo.Tbgroup;
 
 public interface ItbgroupService {
 	List<Tbgroup> getTbgroups(Tbgroup tbgroup);
-	Tbgroup getTbgroupById(String id);
+	Tbgroup getTbgroupById(String groupid);
 	int add(Tbgroup tbgroup);
 	int update(Tbgroup tbgroup);
 	int del(String id);

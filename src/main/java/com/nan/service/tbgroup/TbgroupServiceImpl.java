@@ -19,9 +19,9 @@ public class TbgroupServiceImpl implements ItbgroupService {
 	}
 
 	@Override
-	public Tbgroup getTbgroupById(String id) {
+	public Tbgroup getTbgroupById(String groupid) {
 		// TODO Auto-generated method stub
-		return tbgroupDao.getTbgroupById(id);
+		return tbgroupDao.getTbgroupById(groupid);
 	}
 
 	@Override

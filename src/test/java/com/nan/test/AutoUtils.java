@@ -7,7 +7,7 @@ public class AutoUtils {
 	public static String PACKAGE="com.nan.pojo";
 	public static String BASEPATH=System.getProperty("user.dir")+"\\src\\main\\java\\";
 	public static String RESPATH=System.getProperty("user.dir")+"\\src\\main\\resources\\";
-	public static String CLASSNAME="Groupuser";
+	public static String CLASSNAME="Tbgroup";
 	public static String OBJNAME=CLASSNAME.substring(0, 1).toLowerCase()+CLASSNAME.substring(1);
 	public static String DAOINTERFACE="com/nan/dao/";
 	public static String SERVICEINTERFACE="com/nan/service/";

@@ -9,5 +9,6 @@ import lombok.Data;
 public class Tbgroup {
 private String groupid;
 private String groupname;
+private String grouphost;
 
 }

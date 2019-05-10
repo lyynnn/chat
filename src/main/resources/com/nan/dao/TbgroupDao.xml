@@ -6,16 +6,17 @@
 	<resultMap type="Tbgroup" id="tbgroupMap">
 		<result property="groupid" column="groupid"></result>
 		<result property="groupname" column="groupname"></result>
+		<result property="grouphost" column="grouphost"></result>
 		
 	</resultMap>
 	<select id="getTbgroups" parameterType="Tbgroup" resultMap="tbgroupMap">
-		select groupid, groupname from tbgroup 
+		select groupid, groupname, grouphost from tbgroup WHERE grouphost=#{grouphost}
 		
 	</select>
 	<select id="getTbgroupById" parameterType="java.lang.String" resultMap="tbgroupMap">
-		select groupid, groupname from tbgroup 
+		select groupid, groupname, grouphost from tbgroup 
 		<where>
-			id=#{1}
+			groupid=#{groupid}
 		</where>
 	</select>
 	<insert id="add" parameterType="Tbgroup">
@@ -27,6 +28,9 @@
 				<if test="groupname!=null">
 					groupname,
 				</if>
+				<if test="grouphost!=null">
+					grouphost,
+				</if>
 				
 			</trim>
 			values
@@ -36,6 +40,9 @@
 				</if>
 				<if test="groupname!=null">
 					#{groupname},
+				</if>
+				<if test="grouphost!=null">
+					#{grouphost},
 				</if>
 				
 			</trim>
@@ -48,6 +55,9 @@
 				</if>
 				<if test="groupname!=null">
 					groupname=#{groupname},
+				</if>
+				<if test="grouphost!=null">
+					grouphost=#{grouphost},
 				</if>
 				
 			</trim>
